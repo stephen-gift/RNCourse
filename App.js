@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  Button,
-  FlatList,
-  StyleSheet,
-  TextInput,
-  View,
-} from "react-native";
+import { Button, FlatList, StyleSheet, TextInput, View } from "react-native";
 import GoalItem from "./components/GoalItem";
 
 export default function App() {
@@ -40,7 +34,7 @@ export default function App() {
         <FlatList
           data={goalArray}
           renderItem={(itemList) => {
-            return <GoalItem />;
+            return <GoalItem text={itemList.item.text} />;
           }}
           keyExtractor={(itemList, index) => itemList.id}
         />
