@@ -4,6 +4,7 @@ import GoalItem from "./components/GoalItem";
 import GoalInput from "./components/GoalInput";
 
 export default function App() {
+  const [modalIsVisible, setModalIsVisible] = useState(false);
   const [goalArray, setGoalArray] = useState([]);
 
   function addGoalHandler(enteredGoalText) {
@@ -19,9 +20,14 @@ export default function App() {
     });
     console.log("DELETE");
   }
+
+  function startAddGoalHandler() {
+    setModalIsVisible(true);
+  }
   return (
     <View style={styles.appContainer}>
-      <GoalInput onAddGoal={addGoalHandler} />
+      <Button title="Add Goal Item" onPress={startAddGoalHandler} />
+      <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} />
       <View style={styles.goalsContainer}>
         <FlatList
           data={goalArray}
